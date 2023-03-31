@@ -6,10 +6,12 @@ from pvrecorder import PvRecorder
 load_dotenv()
 
 access_key = os.environ.get("PORCUPINE_ACCESS_KEY")
+keywords = ["Okey Zie"]
 
-keywords = ["picovoice", "bumblebee"]
-
-porcupine = pvporcupine.create(access_key=access_key, keywords=keywords)
+porcupine = pvporcupine.create(
+    access_key=access_key,
+    keyword_paths=[os.getcwd() + "/bin/Okey-Zie_en_windows_v2_1_0.ppn"],
+)
 recoder = PvRecorder(device_index=-1, frame_length=porcupine.frame_length)
 
 

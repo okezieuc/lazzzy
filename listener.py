@@ -82,7 +82,8 @@ try:
         format=pyaudio.paInt16,
         # channels=target_device["maxInputChannels"],
         channels=1,
-        rate=porcupine.sample_rate,
+        #rate=porcupine.sample_rate,
+        rate=int(target_device["defaultSampleRate"])
         # frames_per_buffer=pyaudio.get_sample_size(pyaudio.paInt24),
         frames_per_buffer=porcupine.frame_length,
         input=True,

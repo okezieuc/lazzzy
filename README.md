@@ -11,3 +11,4 @@ lazzzy let's you turn off your mic and camera in a meeting and leave to:
 because it will send you an sms notification whenever someone calls your name in the call. 
 
 p.s. people who use lazzzy are liable to drop out of school or get laid off.
+p.p.s use lazzzy

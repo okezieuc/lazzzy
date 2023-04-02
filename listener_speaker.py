@@ -6,8 +6,9 @@ from twilio.rest import Client
 from dotenv import load_dotenv
 import os
 import pvporcupine
-import pyaudio
+import pyaudiowpatch as pyaudio
 import struct
+import numpy as np
 
 load_dotenv()
 
@@ -38,20 +39,23 @@ try:
     pa = pyaudio.PyAudio()
 
     audio_stream = pa.open(
-        rate=porcupine.sample_rate,
+        #rate=porcupine.sample_rate,
+        rate=44100,
         channels=1,
         format=pyaudio.paInt16,
         input=True,
         frames_per_buffer=porcupine.frame_length,
+        input_device_index=10
     )
 
     # initialize time when keyword was last detected to 0
     name_last_detected_at = 0
 
     while True:
+        # print("listening")
         pcm = audio_stream.read(porcupine.frame_length)
         pcm = struct.unpack_from("h" * porcupine.frame_length, pcm)
-
+        
         keyword_index = porcupine.process(pcm)
         if keyword_index >= 0:
             print(f"Detected {keywords[keyword_index]}")
